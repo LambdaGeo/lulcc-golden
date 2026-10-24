@@ -1,0 +1,99 @@
+{
+  "generated_at_utc": "2026-10-24T23:01:46Z",
+  "r_version": "R version 4.5.1 (2025-06-13)",
+  "platform": "x86_64-pc-linux-gnu",
+  "rng_kind": ["Mersenne-Twister", "Inversion", "Rejection"],
+  "cran_repo": "https://packagemanager.posit.co/cran/__linux__/noble/2026-10-01",
+  "base_image": "rocker/geospatial:4.5.1",
+  "gdal": "3.8.4",
+  "packages": {
+    "lulcc": {
+      "package": "lulcc",
+      "version": "1.0.4",
+      "packaged": "2019-02-25 11:28:50 UTC; simon",
+      "publication": "2025-11-08 18:27:27 UTC",
+      "repository": "RSPM",
+      "built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-11-09 18:51:23 UTC; unix"
+    },
+    "raster": {
+      "package": "raster",
+      "version": "3.6-32",
+      "packaged": "2025-03-28 04:28:45 UTC; rhijm",
+      "publication": "2025-03-28 08:10:02 UTC",
+      "repository": "RSPM",
+      "built": "R 4.5.0; x86_64-pc-linux-gnu; 2026-08-12 19:51:15 UTC; unix"
+    },
+    "terra": {
+      "package": "terra",
+      "version": "1.8-70",
+      "packaged": "2025-09-26 22:13:23 UTC; rhijm",
+      "publication": "2025-09-27 04:00:02 UTC",
+      "repository": "RSPM",
+      "built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-09-28 04:31:21 UTC; unix"
+    },
+    "sp": {
+      "package": "sp",
+      "version": "2.2-0",
+      "packaged": "2025-01-30 11:06:55 UTC; edzer",
+      "publication": "2025-02-01 09:40:02 UTC",
+      "repository": "RSPM",
+      "built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:26:47 UTC; unix"
+    },
+    "ROCR": {
+      "package": "ROCR",
+      "version": "1.0-12",
+      "packaged": "2026-01-22 15:23:44 UTC; flixr",
+      "publication": "2026-01-23 06:41:23 UTC",
+      "repository": "RSPM",
+      "built": "R 4.5.0; ; 2026-01-24 04:34:54 UTC; unix"
+    },
+    "caret": {
+      "package": "caret",
+      "version": "7.0-1",
+      "packaged": "2024-12-09 16:28:32 UTC; max",
+      "publication": "2024-12-10 01:30:01 UTC",
+      "repository": "RSPM",
+      "built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 04:34:58 UTC; unix"
+    },
+    "rpart": {
+      "package": "rpart",
+      "version": "4.1.27",
+      "packaged": "2026-03-26 15:46:48 UTC; atkinson",
+      "publication": "2026-03-27 06:10:02 UTC",
+      "repository": "RSPM",
+      "built": "R 4.5.0; x86_64-pc-linux-gnu; 2026-08-12 19:39:36 UTC; unix"
+    },
+    "randomForest": {
+      "package": "randomForest",
+      "version": "4.7-1.2",
+      "packaged": "2024-09-22 08:30:17 UTC; hornik",
+      "publication": "2024-09-22 09:14:44 UTC",
+      "repository": "RSPM",
+      "built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:11:33 UTC; unix"
+    },
+    "Hmisc": {
+      "package": "Hmisc",
+      "version": "5.3-0",
+      "packaged": "2026-09-05 21:03:55 UTC; harrelfe",
+      "publication": "2026-09-06 12:40:02 UTC",
+      "repository": "RSPM",
+      "built": "R 4.5.0; x86_64-pc-linux-gnu; 2026-09-07 03:51:07 UTC; unix"
+    },
+    "rasterVis": {
+      "package": "rasterVis",
+      "version": "0.51.7",
+      "packaged": "2025-09-01 12:10:09 UTC; oscar",
+      "publication": "2025-09-01 12:50:02 UTC",
+      "repository": "RSPM",
+      "built": "R 4.5.0; ; 2025-09-02 05:43:01 UTC; unix"
+    },
+    "lattice": {
+      "package": "lattice",
+      "version": "0.22-7",
+      "packaged": "2025-04-02 04:55:57 UTC; deepayan",
+      "publication": "2025-04-02 15:40:02 UTC",
+      "repository": "CRAN",
+      "built": "R 4.5.1; x86_64-pc-linux-gnu; 2025-10-31 11:40:09 UTC; unix"
+    }
+  }
+}
