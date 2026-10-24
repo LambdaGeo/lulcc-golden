@@ -1,0 +1,5 @@
+.check/
+.Rhistory
+.RData
+Rplots.pdf
+*.aux.xml

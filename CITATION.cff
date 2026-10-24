@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use these goldens, please cite this repository and the original article."
+title: "lulcc-goldens: reference outputs of lulcc 1.0.4 for the Plum Island Ecosystems application"
+type: dataset
+authors:
+  - family-names: Costa
+    given-names: Sérgio Souza
+    orcid: "https://orcid.org/0000-0002-0232-4549"
+    affiliation: "Universidade Federal do Maranhão (UFMA), LambdaGeo"
+repository-code: "https://github.com/LambdaGeo/lulcc-goldens"
+license: MIT
+version: 0.1.0-dev
+keywords:
+  - land use change
+  - CLUE-S
+  - lulcc
+  - reproducibility
+  - replication
+references:
+  - type: article
+    title: "An open and extensible framework for spatially explicit land use change modelling: the lulcc R package"
+    authors:
+      - family-names: Moulds
+        given-names: Simon
+      - family-names: Buytaert
+        given-names: Wouter
+      - family-names: Mijic
+        given-names: Ana
+    journal: "Geoscientific Model Development"
+    volume: 8
+    start: 3215
+    end: 3229
+    year: 2015
+    doi: "10.5194/gmd-8-3215-2015"
+  - type: software
+    title: "lulcc: Land Use Change Modelling in R"
+    authors:
+      - family-names: Moulds
+        given-names: Simon
+    version: "1.0.4"
+    url: "https://cran.r-project.org/package=lulcc"
+    license: GPL-2.0-or-later
