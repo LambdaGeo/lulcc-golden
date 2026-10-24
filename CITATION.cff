@@ -5,8 +5,16 @@ type: dataset
 authors:
   - family-names: Costa
     given-names: Sérgio Souza
+    affiliation: Universidade Federal do Maranhão (UFMA)
     orcid: "https://orcid.org/0000-0002-0232-4549"
-    affiliation: "Universidade Federal do Maranhão (UFMA), LambdaGeo"
+  - family-names: Bezerra
+    given-names: Denilson da Silva
+    affiliation: Universidade Federal do Maranhão (UFMA)
+    orcid: "https://orcid.org/0000-0002-9567-7828"
+  - family-names: Alves
+    given-names: José Magno Pinheiro
+    affiliation: Universidade Federal do Maranhão (UFMA)
+    orcid: "https://orcid.org/0009-0003-7212-4870"
 repository-code: "https://github.com/LambdaGeo/lulcc-goldens"
 license: MIT
 version: 0.1.0-dev
