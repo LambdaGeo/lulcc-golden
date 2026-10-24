@@ -71,14 +71,18 @@ make verify             # check SHA256SUMS
 
 ## The demo does not run unchanged on current R
 
-The `pie` rasters were saved with a CRS object from before PROJ 6. With
-current raster/sp, `allocate()` creates the simulated map with a WKT2 CRS
-and stops with `Error in compareRaster(x) : different crs` when it stacks
-it on the initial map. `scripts/common.R` (`refresh_crs`) re-assigns the
-same CRS in the current form before anything else runs: coordinates,
-extent and values are unchanged, and no lulcc computation uses the CRS.
-Each run writes `goldens/crs_refreshed.txt` saying whether the fix was
-needed. This is the only change to the published demo.
+The `pie` rasters were serialized by an old version of the raster package,
+before the `srs` slot (WKT2 CRS) existed. With current raster/sp,
+`allocate()` creates the simulated map with `raster::raster(map0)`, which
+has a WKT2 CRS, while the old object has none; it then stops with
+`Error in compareRaster(x) : different crs` when stacking the two.
+`scripts/common.R` (`refresh_crs`) rebuilds each layer as a fresh
+RasterLayer with the same grid, CRS and values, and checks that values,
+extent and resolution are unchanged. (Re-assigning the CRS with `crs<-`
+does not work on the old objects: it leaves them with no CRS at all.) The
+rebuilt layers carry the CRS, which GDAL identifies as EPSG:26986 (NAD83 /
+Massachusetts Mainland). Each run writes `goldens/crs_refreshed.txt`. This
+is the only change to the published demo.
 
 ## Smoke test (outside Docker, 24 Oct 2026)
 
@@ -109,6 +113,8 @@ needed. This is the only change to the published demo.
   runs in regression mode (randomForest warns about it). This is lulcc's
   behaviour and is kept; it only affects the rf AUCs of Fig. 5.
 - The pixels of `pie` are not square (99.92 m × 99.95 m).
+- CSV files write doubles with 17 significant digits (R's `write.csv` keeps
+  15), so values round-trip exactly to float64.
 - lulcc 1.0.4 was packaged in 2019 and republished on CRAN in November
   2025 under the same version number. `environment.json` records the
   `Packaged` and `Date/Publication` fields of the build actually used.

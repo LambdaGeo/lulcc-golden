@@ -35,21 +35,33 @@ CLUES_PARAMS <- list(jitter.f = 0.0002,
 CLUES_ELAS <- c(0.2, 0.2, 0.2)
 ORDERED_ORDER <- c(2, 1, 3)  # built, forest, other
 
-# The `pie` rasters were saved with a CRS object from before PROJ 6. With
-# current raster/sp, a raster created from them carries a WKT2 CRS, and
-# allocate() stops with "different crs" when it stacks the simulated map
-# on the initial one (compareRaster in R/allocate.R). Re-assigning the same
-# CRS in the current form fixes it. Coordinates, extent and values are not
-# touched, and nothing in lulcc's computations depends on the CRS. Whether
-# the fix was needed is recorded in goldens/crs_refreshed.txt.
+# The `pie` rasters were serialized by an old version of raster, before the
+# `srs` slot (WKT2 CRS) existed. With current raster/sp, a raster created
+# from them (raster::raster(map0) in allocate()) gets a WKT2 CRS, the old
+# object has none, and allocate() stops with "different crs" when it stacks
+# the simulated map on the initial one (compareRaster in R/allocate.R).
+# Rebuilding each layer as a fresh RasterLayer with the same grid, CRS and
+# values fixes it; the script checks that values, extent and resolution are
+# unchanged. Re-assigning the CRS with crs<- does NOT work on the old objects:
+# it leaves them with no CRS at all. Whether the rebuild was needed is
+# recorded in goldens/crs_refreshed.txt.
 refresh_crs <- function(pie) {
-  ref <- raster::raster(pie[[1]])
-  needed <- !raster::compareRaster(pie[[1]], ref, crs = TRUE, stopiffalse = FALSE)
+  needed <- !.hasSlot(pie[[1]], "srs") ||
+    !raster::compareRaster(pie[[1]], raster::raster(pie[[1]]), crs = TRUE, stopiffalse = FALSE)
   if (needed) {
-    for (n in names(pie)) raster::crs(pie[[n]]) <- raster::crs(ref)
+    for (n in names(pie)) {
+      old <- pie[[n]]
+      new <- raster::setValues(raster::raster(old), raster::getValues(old))
+      names(new) <- names(old)
+      stopifnot(identical(raster::getValues(new), raster::getValues(old)),
+                isTRUE(all.equal(raster::extent(new), raster::extent(old))),
+                identical(raster::res(new), raster::res(old)),
+                nchar(raster::wkt(new)) > 0)
+      pie[[n]] <- new
+    }
   }
   dir.create(OUT, showWarnings = FALSE, recursive = TRUE)
-  writeLines(c(paste0("crs_refreshed: ", needed),
+  writeLines(c(paste0("rasters_rebuilt: ", needed),
                paste0("raster: ", packageVersion("raster")),
                paste0("sp: ", packageVersion("sp"))),
              file.path(OUT, "crs_refreshed.txt"))
@@ -70,13 +82,23 @@ load_pie <- function() {
   list(pie = pie, obs = obs, ef = ef)
 }
 
+# write.csv keeps only 15 significant digits. Doubles are written with 17
+# (enough to round-trip a float64 exactly), so a reimplementation can be
+# compared without rounding noise, e.g. on near-ties in the allocation.
 write_csv <- function(df, path) {
+  df <- as.data.frame(df, stringsAsFactors = FALSE)
+  is_text <- vapply(df, function(v) is.character(v) || is.factor(v), logical(1))
+  for (n in names(df)[vapply(df, is.double, logical(1))]) {
+    v <- df[[n]]
+    df[[n]] <- ifelse(is.na(v), "NA", sprintf("%.17g", v))
+  }
+  quote <- if (any(is_text)) which(is_text) else FALSE
   if (grepl("\\.gz$", path)) {
     con <- gzfile(path, "w")
     on.exit(close(con))
-    utils::write.csv(df, con, row.names = FALSE)
+    utils::write.csv(df, con, row.names = FALSE, quote = quote)
   } else {
-    utils::write.csv(df, path, row.names = FALSE)
+    utils::write.csv(df, path, row.names = FALSE, quote = quote)
   }
   invisible(path)
 }
