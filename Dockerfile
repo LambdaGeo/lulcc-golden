@@ -6,7 +6,7 @@
 # version is fixed by the date. lulcc 1.0.4 was republished on CRAN on
 # 2025-11-08, so the snapshot must be later than that.
 
-ARG BASE_IMAGE=rocker/geospatial:4.5.1
+ARG BASE_IMAGE=rocker/geospatial@sha256:6483198da9a67f6d940a291b33786a156ddceab9df9e7c617728974a0e939227
 FROM ${BASE_IMAGE}
 
 ARG BASE_IMAGE
