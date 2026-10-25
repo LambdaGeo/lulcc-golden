@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Shared setup for the lulcc-goldens scripts.
 #
 # Everything here follows demo/gmd-paper.R of lulcc 1.0.4, which is the

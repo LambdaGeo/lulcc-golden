@@ -22,10 +22,10 @@
 - lulcc does not state a separate licence for the data set; it is
   distributed inside a GPL (>= 2) package.
 
-**To do before the first release:** confirm that the GeoTIFF copies in
-`goldens/data/` may be redistributed under the licence of this repository's
-Zenodo record. If not, keep only `scripts/export_pie.R` and the checksums,
-and let users regenerate the files.
+The GeoTIFF copies in `goldens/data/` are exported from `data(pie)` by
+`scripts/export_pie.R` and redistributed, as part of this repository, under
+GPL-3.0-or-later, which GPL (>= 2) permits. Please also cite Pontius &
+Parmentier (2014) and Moulds et al. (2015) when using them.
 
 ## Not used
 

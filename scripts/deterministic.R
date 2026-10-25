@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Deterministic golden: the paper's model set-up with the randomness
 # removed, exported stage by stage so each stage of a reimplementation can
 # be checked on its own:

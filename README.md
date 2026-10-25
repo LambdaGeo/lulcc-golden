@@ -121,5 +121,9 @@ is the only change to the published demo.
 
 ## Licence
 
-Scripts: MIT (see `LICENSE`). lulcc and its `pie` data set: see
-`THIRD_PARTY.md`.
+Copyright (C) 2026 Sérgio Souza Costa, Denilson da Silva Bezerra, José Magno Pinheiro Alves,
+Hissa Barbara Oliveira, Mateus Dutra Vale and Samylli Kalei Silva Zhao (UFMA).
+
+GNU General Public License, version 3 or (at your option) any later version; see
+`LICENSE`. The `pie` data set in `goldens/data/` comes from lulcc, which is distributed
+under GPL (>= 2), and is redistributed here under GPL-3.0-or-later; see `THIRD_PARTY.md`.

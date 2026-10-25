@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Export the Plum Island Ecosystems data set shipped with lulcc to GeoTIFF,
 # so that the replication can read it without R.
 #

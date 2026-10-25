@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Ensemble golden: demo/gmd-paper.R run as published, once per seed.
 #
 # The paper sets no seed. The demo draws random numbers in this order:
